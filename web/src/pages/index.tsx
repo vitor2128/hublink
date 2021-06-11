@@ -1,4 +1,3 @@
-import FirstPage from './FirstPage/FirstPage';
-import SecondPage from './SecondPage/SecondePage';
+import FirstPage from './FirstPage';
 
-export { FirstPage, SecondPage };
+export { FirstPage };

@@ -26,10 +26,10 @@ export default createGlobalStyle`
     list-style: none;
   }
 
-  img {
+  /* img {
    max-width: 100%;
     display: block;
-  }
+  } */
 
   input,
   button,
