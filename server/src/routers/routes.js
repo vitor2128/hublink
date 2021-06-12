@@ -1,20 +1,24 @@
 const express = require('express')
 const router = express.Router()
-const UsersController = require('../controllers/UsersController')
+const NewAccountController = require('../controllers/NewAccountController')
 const LoginController = require('../controllers/LoginController')
 const Hublink = require('../controllers/Hublink')
-const LinkController = require('../controllers/LinkController')
+const CreateButtonController = require('../controllers/CreateButtonController')
+const ProfileController = require('../controllers/ProfileController')
 
 const authMiddleware = require('../middlewares/auth')
  
-const usersController = new UsersController()
+const newAccountController = new NewAccountController()
 const loginController = new LoginController()
 const hublink = new Hublink()
-const linkController = new LinkController()
+const createbuttonController = new CreateButtonController()
+const profileController = new ProfileController()
 
 router.get('/:username', hublink.inicialPage)
-router.post('/auth/new-account', usersController.create)
+router.post('/auth/new-account', newAccountController.create)
 router.post('/auth/login', loginController.auth)
-router.post('/auth/createbutton',authMiddleware, linkController.createButton)
+
+router.post('/auth/new-account/new-profile', authMiddleware, profileController.createProfile)
+router.post('/auth/createbutton', authMiddleware, createbuttonController.createButton)
 
 module.exports = router

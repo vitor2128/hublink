@@ -1,6 +1,6 @@
 const User = require('../models/user')
 
-class LinkController {
+class CreateButtonController {
     async createButton(req, res){
         try {
             const { link, title } = req.body
@@ -8,6 +8,10 @@ class LinkController {
             const id = req.userId
 
             const user = await User.findById(id)
+
+            if(user.username === '') {
+                return res.status(401).json({Error: 'redirect tela profile '})
+            }
 
             if(user.plane == 'pro'){
                 await User.findByIdAndUpdate(id, {$push: {links:{link: link, title: title}}})
@@ -33,4 +37,4 @@ class LinkController {
     }
 }
 
-module.exports = LinkController
+module.exports = CreateButtonController

@@ -11,10 +11,10 @@ function generateToken(params = {}) {
     })
 }
 
-class UsersController {
+class NewAccountController {
     async create(req, res){
         try {
-            const {name, username, email, password} = req.body
+            const {name, email, password} = req.body
 
             // if(name != undefined){
             //     return res.status(400).json({Error: "Name invalid"})
@@ -24,23 +24,22 @@ class UsersController {
                 return res.status(400).json({Error: "Name invalid"})
             }
                 
-            // if(email != undefined)
-            //     return res.status(400).json({Error: "email invalid"})
+            // if(username != undefined)
+            //     return res.status(400).json({Error: "Username invalid"})
             // if(password != undefined)
             //     return res.status(400).json({Error: "password invalid"})
+            
             
             if(await User.findOne({ email })) 
                 return res.status(400).json({Error: "User already exists"})
 
-            if(await User.findOne({ username })) 
-                return res.status(400).json({Error: "Username already exists"})
 
             
             
             const salt = bcrypt.genSaltSync(saltRounds)
             const hash = bcrypt.hashSync(password, salt)
 
-            const user = await User.create({name: name, username: username, email: email, password: hash})
+            const user = await User.create({name: name, email: email, password: hash})
                         
             user.password = undefined
             user.createAt = undefined
@@ -56,4 +55,4 @@ class UsersController {
     }
 }
 
-module.exports = UsersController
+module.exports = NewAccountController

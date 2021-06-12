@@ -1,9 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { Container } from './styles';
 
 import foto from '../../assets/joey-nicotra-WLKIF2CQb5I-unsplash.jpg';
+import { api } from '../../services/api';
 
-const FirstPage: React.FC = () => {
+interface ParamTypes {
+  username: string;
+}
+
+interface LinkTypes {
+  link: string;
+  title: string;
+}
+const HubLink: React.FC = () => {
+  const { username } = useParams<ParamTypes>();
+  const [data, setData] = useState<LinkTypes[]>([]);
+  const [isLoading, setIsLoadin] = useState(true);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    setIsLoadin(false);
+
+    api
+      .get(`/${username}`)
+      .then((res) => {
+        setData(res.data.links);
+      })
+      .catch((error) => {
+        console.log(error);
+        history.push(`/notfound`);
+      });
+
+    return () => setIsLoadin(true);
+  }, []);
+
+  console.log(data);
+
   return (
     <Container id="top">
       <main>
@@ -37,30 +71,17 @@ const FirstPage: React.FC = () => {
         <div className="container-fluid links">
           <div className="row">
             <div className="col">
-              <a href="https://www.instagram.com/vitor.2828" target="_blanc" className="botao">
-                <p>Instagram</p>
-              </a>
-              <a href="https://github.com/vitor2128" target="_blanc" className="botao">
-                <p>GitHub</p>
-              </a>
-              <a href="https://wa.me/5516992696840" target="_blanc" className="botao">
-                <p>WhatsApp</p>
-              </a>
-              <a href="https://" target="_blanc" className="botao">
-                <p>Site</p>
-              </a>
-              <a href="mailto:hugo.veigav@gmail.com" target="_blanc" className="botao">
-                <p>E-mail</p>
-              </a>
-              <a href="tel:+5516992696840" className="botao">
-                <p>Telefone de contato</p>
-              </a>
+              {data.map((lnk) => (
+                <a href={lnk.link} target="_blanc" className="botao">
+                  <p>{lnk.title}</p>
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
         <div className="container-fluid social">
-          <div className="row">
+          {/* <div className="row">
             <div className="col">
               <ul>
                 <li>
@@ -90,7 +111,7 @@ const FirstPage: React.FC = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
 
@@ -119,4 +140,4 @@ const FirstPage: React.FC = () => {
   );
 };
 
-export default FirstPage;
+export default HubLink;

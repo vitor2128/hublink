@@ -1,3 +1,4 @@
-import FirstPage from './FirstPage';
+import HubLink from './HubLink';
+import NotFound from './NotFound';
 
-export { FirstPage };
+export { HubLink, NotFound };

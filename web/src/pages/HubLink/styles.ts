@@ -39,10 +39,12 @@ export const Container = styled.div`
 
   .container-fluid {
     max-width: 540px;
+    margin-bottom: 10px;
   }
 
   .bio p {
     max-width: 540px;
+    margin-bottom: 10px;
   }
 
   .photo {
@@ -112,7 +114,7 @@ export const Container = styled.div`
   }
 
   footer {
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     font-size: 0.8rem;
     line-height: 1rem;
   }
