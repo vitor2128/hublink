@@ -6,22 +6,35 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: background-color 5000s;
+      -webkit-text-fill-color: #fff !important;
+    }
+
   }
 
-  *::before,
+  /* *::before,
   *::after {
     box-sizing: border-box;
-  }
+  } */
 
   body {
-    min-height: 100vh;
+    background: #312e38;
+    color: #fff;
+    /* min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
-    line-height: 1.5;
+    line-height: 1.5; */
     -webkit-font-smoothing: antialiased;
   }
 
   ul,
+
   ol {
     list-style: none;
   }
@@ -31,6 +44,10 @@ export default createGlobalStyle`
     display: block;
   } */
 
+  a {
+    text-decoration: none;
+  }
+
   input,
   button,
   textarea,
@@ -39,7 +56,11 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font: 16px serif;
+    font-size: 16px;
+  }
+
+  button {
+    cursor: pointer;
   }
 
   @media (prefers-reduced-motion: reduce) {

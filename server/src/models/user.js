@@ -40,23 +40,23 @@ const UserSchema = new mongoose.Schema({
                 {
                     background: {
                         type: String,
-                        require: true,
+
                     },
                     fontColor: {
                         type: String,
-                        require: true,
+
                     },
                     fontStyle: {
                         type: String,
-                        require: true,
+
                     },
                     borderColor: {
                         type: String,
-                        require: true,
+
                     },
                     borderStyle: {
                         type: String,
-                        require: true,
+
                     },
                     icon: {
                         type: String,

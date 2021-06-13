@@ -3,9 +3,9 @@ const User = require('../models/user')
 class ProfileController {
     async createProfile(req, res){
         try {
-            const { link, title } = req.body
+            const { link, title, username, background, fontColor, borderColor } = req.body
             // const { id } = req.params;
-            const {username} = req.body
+  
             const id = req.userId
 
             const user = await User.findById(id)
@@ -19,7 +19,20 @@ class ProfileController {
             
             
                        
-            await User.findByIdAndUpdate(id, {username:username, $push: {links:{link: link, title: title}}})
+            await User.findByIdAndUpdate(id, 
+                {username:username, 
+                    $push: {
+                        links:{
+                            link: link, 
+                            title: title,
+                            css: [{
+                                background: background,
+                                fontColor: fontColor,
+                                borderColor: borderColor,
+                            }]
+                        }
+                    }
+                })
 
     
             const us = await User.findById(id)

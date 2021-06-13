@@ -1,15 +1,13 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Container } from './styles';
-import error404 from '../../assets/error404.svg';
 
 const NotFound: React.FC = () => {
-  return (
-    <Container id="top">
-      <button>pagina inicial</button>
-    </Container>
-  );
+  const history = useHistory();
+
+  return <Container id="top" />;
 };
 
 export default NotFound;

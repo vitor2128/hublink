@@ -24,7 +24,11 @@ class LoginController {
                 return res.status(404).json('password invalid')
             
             if(user.links.length === 0) {
-                return res.status(401).json({Error: 'redirect tela profile '})
+                return res.status(401).json({
+                    user,
+                    token: generateToken({id: user.id, name: user.name}),
+
+                }).redirect('/auth/new-account/new-profile')
             }
 
             user.password = undefined
