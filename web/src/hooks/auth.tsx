@@ -5,6 +5,7 @@ export const TOKEN_KEY = '@hublink:token';
 export const NAME = '@hublink:username';
 
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
+export const getUserName = () => localStorage.getItem(NAME);
 
 export const userName = (user: any) => {
   localStorage.setItem(NAME, user);

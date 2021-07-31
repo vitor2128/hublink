@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { FiInstagram, FiFacebook, FiTwitter, FiMail, FiYoutube, FiLinkedin } from 'react-icons/fi';
 import { Container } from './styles';
 
 import foto from '../../assets/joey-nicotra-WLKIF2CQb5I-unsplash.jpg';
@@ -9,20 +10,25 @@ interface ParamTypes {
   username: string;
 }
 
+interface CssTypes {
+  background: string;
+  fontColor: string;
+  borderColor: string;
+}
+
 interface LinkTypes {
   link: string;
   title: string;
+  css: CssTypes[];
 }
+
 const HubLink: React.FC = () => {
   const { username } = useParams<ParamTypes>();
   const [data, setData] = useState<LinkTypes[]>([]);
-  const [isLoading, setIsLoadin] = useState(true);
 
   const history = useHistory();
 
   useEffect(() => {
-    setIsLoadin(false);
-
     api
       .get(`/${username}`)
       .then((res) => {
@@ -32,11 +38,7 @@ const HubLink: React.FC = () => {
         console.log(error);
         history.push(`/notfound`);
       });
-
-    return () => setIsLoadin(true);
   }, []);
-
-  console.log(data);
 
   return (
     <Container id="top">
@@ -71,47 +73,58 @@ const HubLink: React.FC = () => {
         <div className="container-fluid links">
           <div className="row">
             <div className="col">
-              {data.map((lnk) => (
-                <a href={lnk.link} target="_blanc" className="botao">
-                  <p>{lnk.title}</p>
-                </a>
-              ))}
+              {data.map((lnk) =>
+                lnk.css.map((css) => (
+                  <a
+                    href={lnk.link}
+                    target="_blanc"
+                    className="botao"
+                    style={{
+                      color: `${css.fontColor}`,
+                      backgroundColor: `${css.background}`,
+                      border: ` 2px solid  ${css.borderColor}`,
+                    }}
+                  >
+                    <p>{lnk.title}</p>
+                  </a>
+                )),
+              )}
             </div>
           </div>
         </div>
 
         <div className="container-fluid social">
-          {/* <div className="row">
+          <div className="row">
             <div className="col">
               <ul>
                 <li>
                   <a href="https://www.instagram.com/" target="_blanc">
-                    <i className="bi bi-instagram" title="Instagram" />
+                    <FiInstagram />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.twitter.com/" target="_blanc">
-                    <i className="bi bi-twitter" title="Twitter" />
+                    <FiTwitter />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.linkedin.com/" target="_blanc">
-                    <i className="bi bi-linkedin" title="LinkedIn" />
+                    <FiLinkedin />
                   </a>
                 </li>
                 <li>
                   <a href="https://www.youtube.com" target="_blanc">
-                    <i className="bi bi-youtube" title="Youtube" />
+                    <FiYoutube />
                   </a>
                 </li>
                 <li>
                   <a href="mailto:hi@email.com" target="_blanc">
-                    <i className="bi bi-envelope" title="Email" />
+                    <FiMail />
                   </a>
                 </li>
               </ul>
             </div>
-          </div> */}
+          </div>
         </div>
       </main>
 

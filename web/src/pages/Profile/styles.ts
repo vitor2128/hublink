@@ -1,130 +1,85 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
+
+import back from '../../assets/sharelink-pana.svg';
 
 export const Container = styled.div`
-  display: grid;
-  align-items: center;
-  background-color: #000;
+  height: 100vh;
 
-  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: stretch;
+  max-width: 1920px;
+  margin: 0 auto;
+`;
 
-  color: #fff;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
 
-  font-size: 1.1rem;
-  line-height: 1.5rem;
-  text-align: center;
   justify-content: center;
 
-  .row {
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: calc(var(--bs-gutter-y) * -1);
-    margin-right: calc(var(--bs-gutter-x) / -2);
-    margin-left: calc(var(--bs-gutter-x) / -2);
+  width: 100%;
+  max-width: 600px;
+  align-items: center;
+
+  > img {
+    width: 250px;
   }
 
-  .row > * {
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 100%;
-    padding-right: calc(var(--bs-gutter-x) / 2);
-    padding-left: calc(var(--bs-gutter-x) / 2);
-    margin-top: var(--bs-gutter-y);
-  }
-
-  .col {
-    flex: 1 0 0%;
-  }
-
-  .container-fluid {
-    max-width: 540px;
-    margin-bottom: 10px;
-  }
-
-  .bio p {
-    max-width: 540px;
-    margin-bottom: 10px;
-  }
-
-  .photo {
-    margin-top: 40px;
-    margin-bottom: 50px;
-  }
-
-  .photo img {
-    border-radius: 50%;
-    max-width: 250px;
-  }
-
-  .title h1 {
-    font-weight: 800;
-    font-size: 2.5rem;
-    line-height: 3rem;
-    margin-bottom: 30px;
-  }
-
-  .title h2 {
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 2.5rem;
-  }
-
-  .links {
-    margin-bottom: 40px;
-  }
-
-  .botao {
-    color: #fff;
-
-    max-width: 100%;
-    min-height: 2.2rem;
-    margin-top: 1.5rem;
-    font-weight: 500;
-    text-decoration: none;
+  > a {
+    color: #ff9000;
     display: block;
-    border-color: #fff;
-    border: 1px solid;
-    padding-top: 0.3rem;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+
+    :hover {
+      color: ${shade(0.2, '#ff9000')};
+    }
+
+    > svg {
+      margin-right: 16px;
+      :hover {
+        color: ${shade(0.2, '#ff9000')};
+      }
+    }
+  }
+`;
+
+export const Form = styled.div`
+  margin: 100px 0;
+  width: 340px;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 24px;
+    font-size: 22px;
   }
 
-  .botao:hover {
-    color: #000;
-    background-color: #fff;
+  h2 {
+    margin: 24px;
+    font-size: 20px;
   }
 
-  .social {
-    margin-bottom: 40px;
-  }
-  .social a {
-    text-decoration: none;
-    color: #ffffff;
+  > button {
+    margin-top: 16px;
   }
 
-  .social a:hover {
-    text-decoration: none;
-    color: #e7323f;
-  }
+  > a {
+    color: #f4ede8;
+    display: block;
+    margin-top: 24px;
+    transition: color 0.2s;
 
-  .social ul li {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-    padding: 5px;
+    :hover {
+      color: ${shade(0.2, '#f4ede8')};
+    }
   }
+`;
 
-  footer {
-    margin-bottom: 40px;
-    font-size: 0.8rem;
-    line-height: 1rem;
-  }
-
-  footer a {
-    text-decoration: none;
-    color: #ffffff;
-  }
-
-  footer a:hover {
-    color: #e7323f;
-  }
+export const Background = styled.div`
+  flex: 1;
+  background: url(${back}) no-repeat center;
+  background-size: cover;
 `;

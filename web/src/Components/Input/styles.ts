@@ -22,6 +22,8 @@ export const Container = styled.div<InputProps>`
 
   font-size: 16px;
 
+  caret-color: #f4ede8;
+
   & + div {
     margin-top: 8px;
   }

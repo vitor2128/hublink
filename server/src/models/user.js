@@ -10,6 +10,16 @@ const UserSchema = new mongoose.Schema({
         default: '',
         require: true,
     },
+    titleProfile: {
+        type: String,
+        default: '',
+        require: true,
+    },
+    bio: {
+        type: String,
+        default: '',
+        require: true,
+    },
     email: {
         type: String,
         unique: true,
@@ -39,26 +49,32 @@ const UserSchema = new mongoose.Schema({
             css: [
                 {
                     background: {
+                        default: '#fff',
                         type: String,
 
                     },
                     fontColor: {
+                        default: '#000',
                         type: String,
 
                     },
                     fontStyle: {
+                        default: '1',
                         type: String,
 
                     },
                     borderColor: {
+                        default: '#fff',
                         type: String,
 
                     },
                     borderStyle: {
+                        default: 'solid',
                         type: String,
 
                     },
                     icon: {
+                        default: '',
                         type: String,
                     },
                 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 import Routes from './routes';
 import GlobalStyle from './styles/globalStyles';
@@ -12,6 +13,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <GlobalStyle />
+        <ToastContainer />
         <Routes />
       </BrowserRouter>
     </ThemeProvider>

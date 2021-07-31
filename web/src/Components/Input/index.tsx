@@ -49,10 +49,13 @@ const Input: React.FC<InputProps> = ({
     setPasswordShow(!passwordShow);
   };
 
-  const handleinputBluer = useCallback(() => {
+  const handleInputBlur = useCallback(() => {
     setIsFocused(false);
-
     setIsFilled(!!inputRef.current?.value);
+  }, []);
+
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
   }, []);
 
   return (
@@ -68,8 +71,8 @@ const Input: React.FC<InputProps> = ({
         onChange={Change}
         required={required}
         className={className}
-        onFocus={() => setIsFocused(true)}
-        onBlur={handleinputBluer}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
         src={src}
       />
       {iconEye && !passwordShow && <FiEye onClick={togglePasswordShow} cursor="pointer" />}

@@ -15,10 +15,12 @@ const createbuttonController = new CreateButtonController()
 const profileController = new ProfileController()
 
 router.get('/:username', hublink.inicialPage)
-router.post('/auth/new-account', newAccountController.create)
-router.post('/auth/login', loginController.auth)
+router.post('/new-account', newAccountController.create)
+router.post('/login', loginController.auth)
 
-router.post('/auth/new-account/new-profile', authMiddleware, profileController.createProfile)
+router.post('/auth/new-profile', authMiddleware, profileController.createProfile)
+router.post('/auth/find-profile', authMiddleware, profileController.findProfile)
+
 router.post('/auth/createbutton', authMiddleware, createbuttonController.createButton)
 
 module.exports = router
