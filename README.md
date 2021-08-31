@@ -1,4 +1,4 @@
-# Hublink - Agradador de links 
+# Hublink - Agregador de links 
 ## Em desenvolvimento
 
 
@@ -22,9 +22,14 @@ MySQL Workbench (ou qualquer outro sgd
 ### Instalar dependências node-modules
 
 ```
-cd web
-npm install
-npm start
+<div>
+  <ul>
+    <li> cd web </li>
+    <li>npm install</li>
+    <li>npm start</li>
+  </ul>
+</div>
+
 ```
 
 ## Banco de Dados
@@ -32,13 +37,25 @@ npm start
 ### Subir containers MySQL e Redis via docker compose (raiz projeto)
 
 ```
-docker-compose up -d
+<div>
+  <ul>
+    <li> docker-compose up -d </li>
+  </ul>
+</div>
+
 ```
 
 Porta MySQL: 3321
 
 ## Backend
 
-cd server
-npm install
-npm start
+```
+<div>
+  <ul>
+    <li> cd server </li>
+    <li>npm install</li>
+    <li>npm start</li>
+  </ul>
+</div>
+
+```
